@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		
+		<title>Movie Review | Contact</title>
+
+		<!-- Loading third party fonts -->
+	
+		<!-- Loading main css file -->
+		<link rel="stylesheet" href="style.css">
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-ckL4yugRsKWaeyWO2kfMfYCbVru_bFU"></script>
+		
+	</head>
+
+	<body onload="">
+		<div id="site-content">
+			<header class="site-header">
+				<div class="container">
+					<a href="index.html" id="branding">
+						<img src="images/logo.png" alt="" class="logo">
+						<div class="logo-copy">
+							<h1 class="site-title">Movies For You</h1>
+							<small class="site-description">Get info about movie world</small>
+						</div>
+					</a> <!-- #branding -->
+
+					<div class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							<li class="menu-item current-menu-item"><a href="index.html">Home</a></li>
+							<li class="menu-item"><a href="review.html">Movie News</a></li>
+							<li class="menu-item"><a href="trailer.html">Movie Trailer</a></li>
+							<li class="menu-item"><a href="book.html">Movie Book</a></li>
+							<li class="menu-item"><a href="dvd.html">Movie DVD</a></li>
+							<li class="menu-item"><a href="contact.html">Find Cinema</a></li>
+							<li class="menu-item">
+									<form>
+											<input type="text" name="search" placeholder="Search..">
+										  </form>
+										</li>
+						</ul>
+					</div> 
+
+					<div class="mobile-navigation"></div>
+				</div>
+			</header>
+			<main class="main-content">
+				<div class="container">
+					<div class="page">
+						
+
+						<div class="content">
+							<div class="row">
+								<div class="col-md-4">
+									<h2>Cerca i cinema vicini a te</h2>
+									<ul class="contact-detail">
+										
+									</ul>
+									<div class="contact-form">
+										<input type="search" class="" placeholder="Provincia" onsearch="searchProvincia(value)">
+										<input type="search" class="" placeholder="Regione" onsearch="searchRegione(value)">
+
+									</div>
+								</div>
+								<div class="col-md-7 col-md-offset-1">
+									<div id="map" class="map"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> <!-- .container -->
+			</main>
+			<footer class="site-footer">
+				
+			</footer>
+		</div>
+		<!-- Default snippet for navigation -->
+		
+		<script>
+        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		var labelIndex = 0;
+		
+        function initialize() {
+            var naples = { lat: 40.853294, lng: 14.305573 };
+             map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 6,
+                center:naples
+			});
+			    google.maps.event.addListener(map, 'click', function(event) {
+                addMarker(event.latLng, map);
+                addMarker({"lat":20.981474980591022,"lng":77.63557434082031}, map);
+            });
+        }
+
+        // Adds a marker to the map.
+        function addMarker(location, map) {
+            var marker = new google.maps.Marker({
+                position: location,
+                label: labels[labelIndex++ % labels.length],
+                map: map
+            });	
+        }
+
+        function add(location) {
+            addMarker(location, map);
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+		</script> 
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src="cinema.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		
+		<title>Movie Review | About</title>
+
+		<!-- Loading third party fonts -->
+		<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+		<!-- Loading main css file -->
+		<link rel="stylesheet" href="style.css">
+		
+		<!--[if lt IE 9]>
+		<script src="js/ie-support/html5.js"></script>
+		<script src="js/ie-support/respond.js"></script>
+		<![endif]-->
+
+		
+
+	</head>
+
+
+	<body>
+		
+
+		<div id="site-content">
+				<header class="site-header">
+						<div class="container">
+							<a href="index.html" id="branding">
+								<img src="images/logo.png" alt="" class="logo">
+								<div class="logo-copy">
+									<h1 class="site-title">Movies For You</h1>
+									<small class="site-description">Get info about movie world</small>
+								</div>
+							</a> <!-- #branding -->
+		
+							<div class="main-navigation">
+								<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+								<ul class="menu">
+									<li class="menu-item current-menu-item"><a href="index.html">Home</a></li>
+									<li class="menu-item"><a href="review.html">Movie News</a></li>
+									<li class="menu-item"><a href="Trailer.html">Movie Trailer</a></li>
+									<li class="menu-item"><a href="book.html">Movie Book</a></li>
+									<li class="menu-item"><a href="dvd.html">Movie Dvd</a></li>
+									<li class="menu-item"><a href="contact.html">Find Cinema</a></li>
+								</ul> <!-- .menu -->
+		
+								<form class="search-form">
+									<input type="text" value="" placeholder="Search..." onkeyup="searchFilm(value)">
+									
+								</form>
+							</div> <!-- .main-navigation -->
+		
+							<div class="mobile-navigation"></div>
+						</div>
+					</header>
+			<main class="main-content">
+				<div class="container">
+					<div class="page">
+						<div class="breadcrumbs">
+							
+						</div>
+
+						<div class="row">
+							<div class="col-md-3">
+							
+							</div>
+							<div class="col-md-4">
+								<figure><img src="dummy/figure.jpg" alt="figure image"></figure>
+							</div>
+							<div class="col-md-8">
+								<p class="leading">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.</p>
+								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam.</p>
+							</div>
+						</div>
+
+						<div class="row">
+							 
+							<div class="col-md-3">
+								<ul class="arrow">
+
+								</ul>
+							</div>
+						</div> <!-- .row -->
+						
+							
+						</div>
+					</div>
+				</div> <!-- .container -->
+			</main>
+		</div>
+		<script>
+			
+			var movies = JSON.parse(sessionStorage.getItem('movies'));
+			var n_film = window.location.search.substr(3);
+			var html = "<figure><img src='"+movies[n_film].poster+"'></figure>"
+			document.getElementsByClassName('col-md-3')[0].innerHTML = "<h1>"+movies[n_film].titolo+"</h1>";
+			document.getElementsByClassName('col-md-4')[0].innerHTML = html;
+			document.getElementsByClassName('col-md-8')[0].innerHTML = "<p>"+movies[n_film].description+"</p>";
+			other_info = "<li><strong>Year: </strong>"+movies[n_film].year+"</li><li><strong>Genere: </strong>"+movies[n_film].genre+"</li><li><strong>Voto: </strong>"+movies[n_film].rating+"</li>";
+			other_info += "<li><strong>Streaming: </strong>"+movies[n_film].link_streaming+"</li>";
+			other_info += "<li><strong>Regista: </strong>"+movies[n_film].regista+"</li>";
+			document.getElementsByClassName('arrow')[0].innerHTML = other_info;
+				
+		</script>
+	</body>
+
+</html>

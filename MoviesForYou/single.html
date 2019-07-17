@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		
+		<title>Movie Review | Single</title>
+
+		<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+		<link rel="stylesheet" href="style.css">
+
+	</head>
+	<style>
+			a{
+				color: rgb(46, 43, 28);
+			}
+		  </style>
+	<body>
+		<div id="site-content">
+				<header class="site-header">
+						<div class="container">
+							<a href="index.html" id="branding">
+								<img src="images/logo.png" alt="" class="logo">
+								<div class="logo-copy">
+									<h1 class="site-title">Movies For You</h1>
+									<small class="site-description">Get info about movie world</small>
+								</div>
+							</a> <!-- #branding -->
+		
+							<div class="main-navigation">
+								<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+								<ul class="menu">
+									<li class="menu-item current-menu-item"><a href="index.html">Home</a></li>
+									<li class="menu-item"><a href="review.html">Movie News</a></li>
+									<li class="menu-item"><a href="trailer.html">Movie Trailer</a></li>
+									<li class="menu-item"><a href="book.html">Movie Book</a></li>
+									<li class="menu-item"><a href="dvd.html">Movie Dvd</a></li>
+									<li class="menu-item"><a href="contact.html">Find Cinema</a></li>
+									<li class="menu-item">
+									<form>
+											<input type="text" name="search" placeholder="Search..">
+										  </form>
+										</li>
+								</ul> <!-- .menu -->
+		
+							</div> <!-- .main-navigation -->
+		
+							<div class="mobile-navigation"></div>
+						</div>
+					</header>
+			<main class="main-content">
+				<div class="container">
+					<div class="page">
+						<div class="breadcrumbs">
+							
+						</div>
+
+						<div class="content">
+							<div class="row">
+								<div class="col-md-6">
+									<figure class="movie-poster"></figure>
+								</div>
+								<div class="col-md-6">
+									<h2 class="movie-title"></h2>
+									<div class="movie-summary">
+										
+									</div>
+									<ul class="movie-meta">
+									</ul>
+
+									<ul class="starring">
+											
+									</ul>
+								</div>
+							</div> <!-- .row -->
+							<div class="entry-content">
+								
+							</div>
+							<div class="movie-title"><p>DVD e BlueRay</p></div>
+							<div class="movie-list">
+									
+							</div>
+									
+							</div>
+
+						</div>
+					</div>
+				</div> <!-- .container -->
+			</main>
+		</div>
+
+
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/app.js"></script>
+		
+		<script src="viewDvd.js"></script>
+		<script>
+				
+				var movies = JSON.parse(sessionStorage.getItem('movies'));
+				var n_film = window.location.search.substr(3);
+
+				var imghtml = "<img src='"+movies[n_film].poster+"'>";
+				var titlehtml = movies[n_film].titolo;
+				var summaryhtml = movies[n_film].description;
+				var moviemeta = "<li><strong>Rating: </strong>"+movies[n_film].rating;+"</li>";
+					moviemeta += "<li><strong>Lingua originale: </strong>"+movies[n_film].lan;+"</li>"
+					moviemeta += "<li><strong>Genere: </strong>"+movies[n_film].genre;+"</li>";
+					moviemeta += "<li><strong>Anno: </strong>"+movies[n_film].year;+"</li>"
+				var trailer = movies[n_film].trailer;
+				trailer = trailer.replace("watch?v=", "embed/");
+				console.log(trailer);
+				var img = document.getElementsByClassName('movie-poster');
+				var title = document.getElementsByClassName('movie-title');
+				var summary = document.getElementsByClassName('movie-summary');
+				var meta = document.getElementsByClassName('movie-meta');
+				var starring = document.getElementsByClassName('starring');
+
+				img[0].innerHTML = imghtml;
+				title[0].innerHTML = titlehtml;
+				summary[0].innerHTML = "<p>"+summaryhtml+"</p>";
+				meta[0].innerHTML = moviemeta;
+				starring[0].innerHTML = "<iframe width='500' height='315' src='"+trailer+"'frameborder='0' allowfullscreen> </iframe>";
+					
+		</script>
+	</body>
+
+</html>

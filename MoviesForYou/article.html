@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		
+		<title>Movie Article | Article</title>
+
+		<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="style.css">
+        <style>
+          a{
+              color: rgb(46, 43, 28);
+          }
+        </style>
+	</head>
+	<body>
+		
+
+		<div id="site-content">
+				<header class="site-header">
+						<div class="container">
+							<a href="index.html" id="branding">
+								<img src="images/logo.png" alt="" class="logo">
+								<div class="logo-copy">
+									<h1 class="site-title">Movies For You</h1>
+									<small class="site-description">Get info about movie world</small>
+								</div>
+							</a> <!-- #branding -->
+		
+							<div class="main-navigation">
+								<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+								<ul class="menu">
+									<li class="menu-item current-menu-item"><a href="index.html">Home</a></li>
+									<li class="menu-item"><a href="review.html">Movie News</a></li>
+									<li class="menu-item"><a href="trailer.html">Movie Trailer</a></li>
+									<li class="menu-item"><a href="book.html">Movie Book</a></li>
+									<li class="menu-item"><a href="DVD.html">Movie Dvd</a></li>
+									<li class="menu-item"><a href="contact.html">Find Cinema</a></li>
+								</ul> <!-- .menu -->
+		
+								<form action="#" class="search-form">
+									<input type="text" value="" placeholder="Search..." onkeyup="searchFilm(value)">
+									<button><i class="fa fa-search"></i></button>
+								</form>
+							</div> <!-- .main-navigation -->
+		
+							<div class="mobile-navigation"></div>
+						</div>
+					</header>
+			<main class="main-content">
+				<div class="container">
+					<div class="page">
+						<div class="breadcrumbs">
+							
+						</div>
+
+						<div class="content">
+							<div class="row">
+								<div class="col-md-6">
+									<figure class="movie-poster"></figure>
+								</div>
+								<div class="col-md-6">
+									<h2 class="movie-title"></h2>
+									<div class="movie-summary">
+										
+									</div>
+									<ul class="movie-meta">
+                                    </ul>
+                                    <ul>
+                                        <li class="button">Notizia originale</li>
+                                    </ul>
+
+									<ul class="starring">
+											
+									</ul>
+								</div>
+							</div> <!-- .row -->
+							<div class="entry-content">
+								
+							</div>
+						</div>
+					</div>
+				</div> <!-- .container -->
+            </main>
+            <footer class="site-footer">
+                </footer>
+		</div>
+
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/app.js"></script>
+		<script>
+				
+				var articles = JSON.parse(sessionStorage.getItem('articles'));
+                var n_article = window.location.search.substr(3);
+
+                var imghtml = "<img height=100% width=100% src='"+articles[n_article].poster+"'>";
+                var titlehtml = articles[n_article].titolo;
+                var art = articles[n_article].art;
+                var review = articles[n_article].review;
+                var link = articles[n_article].link;
+
+                var img = document.getElementsByClassName('movie-poster');
+                var title = document.getElementsByClassName('movie-title');
+                var summary = document.getElementsByClassName('movie-summary');
+                var content = document.getElementsByClassName('entry-content');
+                var button = document.getElementsByClassName('button');
+
+                title[0].innerHTML = titlehtml;
+				img[0].innerHTML = imghtml;
+                summary[0].innerHTML = "<p>"+art+"</p>";
+                content[0].innerHTML ="<p>"+review+"</p>";
+                button[0].innerHTML = "<a href='"+link+"'>Notizia originale</a>";
+		</script>
+	</body>
+
+</html>
